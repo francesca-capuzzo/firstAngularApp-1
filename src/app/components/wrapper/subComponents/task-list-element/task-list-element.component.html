@@ -16,9 +16,15 @@
         <span>{{_task.creationDate}}</span>
         <span *ngIf="_task.doneDate">{{_task.doneDate}}</span>
         <span>{{_task.id}}</span>
+        
+        <div *ngIf="_task.tags">
+          <!-- <br><span *ngFor="let tag of _task.tags">{{tag}}<br></span> -->
+          <mat-chip-list multiple aria-label="tags">
+            <mat-chip color="primary" *ngFor="let tag of _task.tags" #c="matChip" selectable="false">{{tag}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        
       </div>
     </mat-expansion-panel>
-
-
   </mat-accordion>
 </div>

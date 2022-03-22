@@ -55,6 +55,7 @@ export class ToDoListComponent implements OnInit{
     //     this.taskList.push(task);
     //   }
     // })
+    
     this.api2S.removeActiveTask(task);
     this.api2S.addDoneTask(task);
     this.api2S.completeTask(task).subscribe({

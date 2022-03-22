@@ -1,4 +1,12 @@
-<div class="container">
+<div class="container"><mat-chip-list multiple aria-label="Fish selection">
+    <mat-chip color="primary" *ngFor="let tag of tagArray" #c="matChip" (click)="selection(c)">{{tag}}</mat-chip>
+      <!-- <mat-chip #c="matChip" (click)="selection(c)" color="primary">Lavoro</mat-chip>
+      <mat-chip color="primary">Casa</mat-chip>
+      <mat-chip color="primary">Spesa</mat-chip>
+      <mat-chip color="primary">Svago</mat-chip>
+      <mat-chip color="primary">Altro</mat-chip> -->
+    </mat-chip-list>
+
     <mat-form-field class="example-form-field" appearance="fill">
         <mat-label>Task Name</mat-label>
         <input matInput type="text" [(ngModel)]="taskModel.name">
@@ -6,6 +14,10 @@
           <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
+
+    
+  
+    
 
     <mat-form-field class="example-form-field" appearance="fill">
         <mat-label>Task Priority</mat-label>

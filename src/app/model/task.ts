@@ -47,6 +47,8 @@ export class Task {
     }
     if (this.tags && this.tags.length > 0){
       dbObject.tags = this.tags;
+    } else {
+      dbObject.tags = null;
     }
     return dbObject
   }
