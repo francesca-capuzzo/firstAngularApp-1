@@ -8,16 +8,16 @@
     </button>
 </mat-form-field>
   
-<button (click)="findTasks()" class="button" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+<button (click)="findTasksWithTags()" class="button" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
     <mat-icon>search</mat-icon>
 </button>
 
 <mat-chip-list multiple aria-label="tags">
   <mat-chip color="primary" *ngFor="let tag of tagArray" #c="matChip" (click)="selection(c)">{{tag}}</mat-chip>
 </mat-chip-list>
-<button (click)="findTaskByTag()" class="button" mat-mini-fab color="accent" aria-label="Example icon button with a menu icon">
+<!-- <button (click)="findTasksWithTags()" class="button" mat-mini-fab color="accent" aria-label="Example icon button with a menu icon">
   <mat-icon>search</mat-icon>
-</button>
+</button> -->
 
 
 </div>

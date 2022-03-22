@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DEFAULT_INTERPOLATION_CONFIG } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, first, map, Observable, of, Subscription } from 'rxjs';
+import { Tag } from '../model/tags';
 import { Task } from "../model/task";
 
 @Injectable({
@@ -13,6 +14,7 @@ export class Api2Service {
 
   public activeTasks$ = new BehaviorSubject<Task[]>([]);
   public doneTasks$ = new BehaviorSubject<Task[]>([]);
+
   public stringArray$ = new BehaviorSubject<string[]>([]);
 
   public activeSub?: Subscription;
@@ -33,7 +35,6 @@ export class Api2Service {
     if(this.activeSub){
       this.activeSub.unsubscribe();
     }
-
     let filterParam = '?';
     if (filter) {
       filterParam += 'search='+ filter
@@ -43,6 +44,68 @@ export class Api2Service {
       map(tasks => tasks.map(t => this.parseTask(t)))
     ).subscribe(tasks => this.activeTasks$.next(tasks))
   }
+
+
+
+
+///////////////////////////////////////// CLASSE INIZIO ///////////////////////////////////////////////////////////////////////////////////
+
+  
+  getActiveTasksWithTags(filter?: string, tags?: string[]){
+    if(this.activeSub){
+      this.activeSub.unsubscribe();
+    }
+    let filterParam = '?';
+    if (filter) {
+      filterParam += 'search='+ filter
+    }
+    this.activeSub = this.http.get<Task[]>(this.API_URL + filterParam).pipe(
+      map(tasks => tasks.filter(t => t.doneDate === null)),
+      map(tasks => this.filterByTags(tasks, tags)),
+      map(tasks => tasks.map(t => this.parseTask(t)))
+    ).subscribe(tasks => this.activeTasks$.next(tasks))
+  }
+
+  getDoneTasksWithTags(filter?: string, tags?: string[]){
+    if(this.doneSub){
+      this.doneSub.unsubscribe();
+    }
+    let filterParam = '';
+    if (filter) {
+      filterParam = '?search='+filter
+    }
+    this.doneSub = this.http.get<Task[]>(this.API_URL + filterParam).pipe(
+      map(tasks => tasks.filter(t => t.doneDate !== null)),
+      map(tasks => this.filterByTags(tasks, tags)),
+      map(tasks => tasks.map(t => this.parseTask(t)))
+    ).subscribe(tasks => this.doneTasks$.next(tasks))
+  }
+
+
+  filterByTags(tasks: any[], tags: string[] | undefined): any[]{
+    if (!tags) {
+      return tasks;
+    } else {
+      // return tasks.filter(t => t.tags?.some((tag: string) => tags.includes(tag)));
+      const tempArray = [];
+      for (const task of tasks) {
+        if (task.tags) {
+          for (const tag of task.tags) {
+            if (tags.includes(tag)) {
+              tempArray.push(task);
+              break;
+            }
+          }
+        }
+      }
+      return tempArray;
+    }
+  }
+
+////////////////////////////////////////// CLASSE FINE //////////////////////////////////////////////////////////////////////////////////
+
+
+
 
   removeActiveTask(task: Task){
     let activeArray = this.activeTasks$.value;
@@ -126,22 +189,23 @@ export class Api2Service {
   getActiveByTag(tagsArr: string[]){
     this.activeTasks$.pipe(
       map(arr => this.searchByTag(arr, tagsArr))
-    ).subscribe(arr => this.activeTasks$.next(arr));
+    )
   }
 
   getDoneByTag(tagsArr: string[]){
     this.doneTasks$.pipe(
       map(arr => this.searchByTag(arr, tagsArr))
-    ).subscribe(arr => this.doneTasks$.next(arr));
+    )
   }
 
   searchByTag(arr: Task[], tagsArr: string[]): Task[]{
     const resultArr = [];
-    for (const tag of tagsArr) {
-      for (const tag2 of arr) {
-        if (tag2.tags) {
-          if(tag2.tags?.indexOf(tag) > -1){
-            resultArr.push(tag2)
+    for (const task of arr) {
+      if (task.tags) {
+        for (const tag of tagsArr) {
+          if(task.tags.indexOf(tag) > -1){
+            resultArr.push(task);
+            break;
           } 
         }
       }

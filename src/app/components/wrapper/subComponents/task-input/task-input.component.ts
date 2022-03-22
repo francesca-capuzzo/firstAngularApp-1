@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatChip } from '@angular/material/chips';
+import { Tag } from 'src/app/model/tags';
 import { Task } from 'src/app/model/task';
 import { ApiService } from 'src/app/services/api.service';
 import { Api2Service } from 'src/app/services/api2.service';
@@ -13,6 +14,13 @@ import { Api2Service } from 'src/app/services/api2.service';
 export class TaskInputComponent implements OnInit {
 
   // public tagArray: string[] = ["Casa", "Lavoro", "Spesa", "Svago", "Altro"];
+
+  public tags: Tag[] = [{name: "scuola", isSelected: false},
+                        {name: "lavoro", isSelected: false},
+                        {name: "spesa", isSelected: false},
+                      ]
+
+  public selectedTags: Tag[] = [];
 
   public tagArray: string[] = [];
 
@@ -46,7 +54,25 @@ export class TaskInputComponent implements OnInit {
       value.selected = true;
       this.stringArray.push(value.value)
     }
-    
-    
   }
+
+
+  ///////////////////////////////////////// CLASSE INIZIO ///////////////////////////////////////////////////////////////////////////
+  selectTag(tag: Tag){
+    if (!tag.isSelected) {
+      tag.isSelected = false;
+      const indexToRemove = this.selectedTags.indexOf(tag);
+      if (indexToRemove !== -1) {
+        this.selectedTags.splice(indexToRemove, 1);
+      }
+    } else{
+      tag.isSelected = true;
+      this.selectedTags.push(tag)
+    }
+  }
+
+
+  ////////////////////////////////////////////// CLASSE FINE //////////////////////////////////////////////////////////////////////
 }
+
+
