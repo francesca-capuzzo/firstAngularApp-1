@@ -8,16 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { WrapperComponent } from './components/wrapper/wrapper.component';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatInputModule } from '@angular/material/input'; 
 
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
+
+
+
 import { DoneListComponent } from './components/wrapper/subComponents/done-list/done-list.component';
 import { FilterComponent } from './components/wrapper/subComponents/filter/filter.component';
 import { StatisticsComponent } from './components/wrapper/subComponents/statistics/statistics.component';
@@ -26,6 +22,11 @@ import { TaskListElementComponent } from './components/wrapper/subComponents/tas
 import { ToDoListComponent } from './components/wrapper/subComponents/to-do-list/to-do-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
+
+//creo 2 moduli: welcome e wrapper
+//creo sharedmodule
+//shared-wrapper-welcome 
+
 
 @NgModule({
   declarations: [
@@ -45,13 +46,7 @@ import { MatChipsModule } from '@angular/material/chips';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatExpansionModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatInputModule,
     FormsModule,
     MatChipsModule
   ],
