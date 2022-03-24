@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { WrapperModule } from './components/wrapper/module/wrapper.module';
 import { WelcomeModule } from './components/welcome/module/welcome.module';
 import { FooterModule } from './components/footer/module/footer.module';
+import { HeaderModule } from './components/header/module/header.module';
 
 
 //creo 2 moduli: welcome e wrapper
@@ -26,7 +27,8 @@ import { FooterModule } from './components/footer/module/footer.module';
     HttpClientModule,
     WrapperModule,
     WelcomeModule,
-    FooterModule
+    FooterModule,
+    HeaderModule
     
   ],
   providers: [],

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component} from '@angular/core';
 import { ComService } from 'src/app/services/com.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComService } from 'src/app/services/com.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   // @Output() public onMenuClicked: EventEmitter<any>;
 
@@ -14,9 +14,7 @@ export class HeaderComponent implements OnInit {
     // this.onMenuClicked = new EventEmitter();
   }
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   menuClick(): void{
     // this.onMenuClicked.emit();
