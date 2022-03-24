@@ -6,21 +6,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input'; 
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
+  ],
+
+  imports: [
+    CommonModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatExpansionModule,
     MatSidenavModule,
-    MatInputModule
-
-  ],
-  imports: [
-    CommonModule
+    MatInputModule,
+    FormsModule,
   ],
 
   exports: [
@@ -29,7 +31,8 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatExpansionModule,
     MatSidenavModule,
-    MatInputModule
+    MatInputModule,
+    
   ]
 })
 export class SharedModule { }

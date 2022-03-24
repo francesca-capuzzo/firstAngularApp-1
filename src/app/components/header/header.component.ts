@@ -13,8 +13,9 @@ export class HeaderComponent implements OnInit {
   constructor(private comS: ComService) {
     // this.onMenuClicked = new EventEmitter();
   }
-
+  
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   menuClick(): void{

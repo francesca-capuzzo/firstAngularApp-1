@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatChip } from '@angular/material/chips';
 import { Tag } from 'src/app/model/tags';
 import { Task } from 'src/app/model/task';
-import { ApiService } from 'src/app/services/api.service';
 import { Api2Service } from 'src/app/services/api2.service';
+
 
 @Component({
   selector: 'app-task-input',

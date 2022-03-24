@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
 import { ComService } from 'src/app/services/com.service';
 
 @Component({
