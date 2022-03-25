@@ -1,4 +1,5 @@
-<div class="container"><mat-chip-list multiple aria-label="Fish selection">
+<div class="container">
+  <mat-chip-list multiple aria-label="Fish selection">
     <mat-chip color="primary" *ngFor="let tag of tagArray" #c="matChip" (click)="selection(c)">{{tag}}</mat-chip>
       <!-- <mat-chip #c="matChip" (click)="selection(c)" color="primary">Lavoro</mat-chip>
       <mat-chip color="primary">Casa</mat-chip>
