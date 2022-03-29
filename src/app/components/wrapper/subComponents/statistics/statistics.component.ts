@@ -15,6 +15,7 @@ export class StatisticsComponent implements OnInit {
   public lastDoneDate?:Date = new Date();
 
 
+  // eslint-disable-next-line no-unused-vars
   constructor(private api2S: Api2Service) { }
 
   ngOnInit(): void {

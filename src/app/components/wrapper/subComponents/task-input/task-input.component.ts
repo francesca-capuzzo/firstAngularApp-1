@@ -28,6 +28,7 @@ export class TaskInputComponent implements OnInit {
 
   public taskModel = {name: "", priority: 0}
 
+  // eslint-disable-next-line no-unused-vars
   constructor(private api2S: Api2Service) { }
 
   ngOnInit(){

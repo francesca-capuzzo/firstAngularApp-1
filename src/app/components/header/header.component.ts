@@ -10,6 +10,7 @@ export class HeaderComponent {
 
   // @Output() public onMenuClicked: EventEmitter<any>;
 
+  // eslint-disable-next-line no-unused-vars
   constructor(private comS: ComService) {
     // this.onMenuClicked = new EventEmitter();
   }

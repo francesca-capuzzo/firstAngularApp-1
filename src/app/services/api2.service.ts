@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DEFAULT_INTERPOLATION_CONFIG } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, first, map, Observable, of, Subscription } from 'rxjs';
-import { Tag } from '../model/tags';
+import { BehaviorSubject, map, Observable, Subscription } from 'rxjs';
 import { Task } from "../model/task";
 
 @Injectable({
@@ -20,6 +18,7 @@ export class Api2Service {
   public activeSub?: Subscription;
   public doneSub?: Subscription;
 
+  // eslint-disable-next-line no-unused-vars
   constructor(private http: HttpClient) {
     this.getActiveTasks();
     this.getDoneTasks();
@@ -170,7 +169,7 @@ export class Api2Service {
     task.doneDate = new Date();
     return this.http.put<Task>(this.API_URL + "/" + task.id, task.toDatabaseModel() ,httpOptions).pipe(
       map(taskObj => this.parseTask(taskObj))
-    );;
+    );
   }
 
   parseTask(obj: any): Task {

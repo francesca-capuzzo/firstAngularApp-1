@@ -18,6 +18,7 @@ export class FilterComponent implements OnInit{
 
   public selectedTags: Tag[] = [];
 
+  // eslint-disable-next-line no-unused-vars
   constructor(private api2S: Api2Service) { }
 
   ngOnInit(){
